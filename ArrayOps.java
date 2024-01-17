@@ -3,29 +3,27 @@ public class ArrayOps {
         int [] myArray = {2,2,3,7,8,3,2};
         int [] anotherArray = {8,2,7,7,3};
         System.out.println(countUniqe(anotherArray));
-        System.out.println(arraysHaveSameElements(myArray,anotherArray));
         System.out.println(intersection(myArray, anotherArray));
         boolean flag = true;
-        flag = arraysHaveSameElements(myArray, anotherArray);
         System.out.println(flag);
 
         
     }
     
-    // public static int findMissingInt (int [] array) {
-    //     String arrayToString = "";
-    //     int missingInteger = 0;
-    //     for ( int i = 0; i < array.length; i++) {
-    //         arrayToString += array[i];     
-    //         }
-    //     for ( int j = 0; j <= arrayToString.length(); j++) {
-    //         if (arrayToString.indexOf(Integer.toString(j)) == -1) {
-    //             missingInteger = j;
-    //             break;
-    //         }
-    //     }
-    //     return missingInteger;
-    //     }
+    public static int findMissingInt (int [] array) {
+        String arrayToString = "";
+        int missingInteger = 0;
+        for ( int i = 0; i < array.length; i++) {
+            arrayToString += array[i];     
+            }
+        for ( int j = 0; j <= arrayToString.length(); j++) {
+            if (arrayToString.indexOf(Integer.toString(j)) == -1) {
+                missingInteger = j;
+                break;
+            }
+        }
+        return missingInteger;
+        }
     
 
     public static int secondMaxValue(int [] array) {
@@ -93,26 +91,17 @@ public class ArrayOps {
         return count;
     }
 
-    public static boolean containsTheSameElements(int[] array1, int[] array2) {
-        if (countUniqe(array1)!= countUniqe(array2)) {
-            return false;
+
+    
+    public static boolean containsTheSameElements(int [] array1,int [] array2) { 
+            if (countUniqe(array1)!= countUniqe(array2)) {
+                return false;
             }
             if ((intersection(array1, array2)).length == countUniqe(array2)) {
-                return true;
-            }
+            return true;
+           }
             else {return false;}
             }
-    
-    
-    // public static boolean containsTheSameElements(int [] array1,int [] array2) { 
-    //         if (countUniqe(array1)!= countUniqe(array2)) {
-    //             return false;
-    //         }
-    //         if ((intersection(array1, array2)).length == countUniqe(array2)) {
-    //         return true;
-    //        }
-    //         else {return false;}
-    //         }
     
     public static int [] intersection(int [] set1, int[] set2) {
         // a function that returns the intersection of two sets
@@ -132,31 +121,31 @@ public class ArrayOps {
         return finalArray;
 
     }
-}
+
 
     
 
-    // public static boolean isSorted(int [] array) {
-    //     // for increasing order
-    //     boolean isIncreasing = true;
-    //     for (int i = 0; i < array.length - 1; i++) {
-    //         if (array[i] > array[i + 1]) {
-    //             isIncreasing = false;
-    //                 break;
-    //             }
-    //         }
-    //     if (isIncreasing) {
-    //         return true;
-    //         }
-    //     // for decreasing order
-    //     for (int j = 0; j < array.length - 1; j++) {
-    //         if (array[j] < array[j + 1]) {
-    //             return false;
-    //             }
-    //         }
-    //     return true;
-    //     }
+    public static boolean isSorted(int [] array) {
+        // for increasing order
+        boolean isIncreasing = true;
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] > array[i + 1]) {
+                isIncreasing = false;
+                    break;
+                }
+            }
+        if (isIncreasing) {
+            return true;
+            }
+        // for decreasing order
+        for (int j = 0; j < array.length - 1; j++) {
+            if (array[j] < array[j + 1]) {
+                return false;
+                }
+            }
+        return true;
+        }
         
-    // }
+    }
 
 
