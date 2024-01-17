@@ -1,31 +1,39 @@
 public class ArrayOps {
     public static void main(String[] args) {
-        int [] myArray = {1,2,3,3,3,4};
-        int [] anotherArray = {2,8,3,7,8};
-        System.out.println(containsTheSameElements(anotherArray, myArray));
+        int [] myArray = {2,2,3,7,8,3,2};
+        int [] anotherArray = {8,2,7,7,3};
+        System.out.println(countUniqe(anotherArray));
+        System.out.println(arraysHaveSameElements(myArray,anotherArray));
+        System.out.println(intersection(myArray, anotherArray));
+        boolean flag = true;
+        flag = arraysHaveSameElements(myArray, anotherArray);
+        System.out.println(flag);
 
         
     }
     
-    public static int findMissingInt (int [] array) {
-        String arrayToString = "";
-        int missingInteger = 0;
-        for ( int i = 0; i < array.length; i++) {
-            arrayToString += array[i];     
-            }
-        for ( int j = 0; j <= arrayToString.length(); j++) {
-            if (arrayToString.indexOf(Integer.toString(j)) == -1) {
-                missingInteger = j;
-                break;
-            }
-        }
-        return missingInteger;
-        }
+    // public static int findMissingInt (int [] array) {
+    //     String arrayToString = "";
+    //     int missingInteger = 0;
+    //     for ( int i = 0; i < array.length; i++) {
+    //         arrayToString += array[i];     
+    //         }
+    //     for ( int j = 0; j <= arrayToString.length(); j++) {
+    //         if (arrayToString.indexOf(Integer.toString(j)) == -1) {
+    //             missingInteger = j;
+    //             break;
+    //         }
+    //     }
+    //     return missingInteger;
+    //     }
     
 
     public static int secondMaxValue(int [] array) {
         int i = 0;
         int [] newArray =  new int [array.length-countMaxChar(array)];
+        if (countMaxChar(array) >= 2) { return findMax(newArray);
+            
+        }
         for(int j = 0; j < array.length; j++) {
             if (array[j] != findMax(array)) {
                 newArray[i++] = array [j];   
@@ -67,30 +75,44 @@ public class ArrayOps {
         return false;
         }
     public static boolean contains( int[] arr, int value) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == value) {
-                return true;
+        
+            for (int element : arr) {
+                if (element == value) {
+                    return true;
+                }
             }
-        }return false;
-    }
-    public static int countUniqe(int [] array) {
-        int count = 0; 
-        for ( int i = 0; i < array.length; i++) {
-            count += contains(array, array[i], i) ? 0 : 1;
+            return false;
+        }
+    public static int countUniqe(int[] array) {
+        int count = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (!contains(array, array[i], i)) {
+                count++;
+            }
         }
         return count;
     }
-    
-    
-    public static boolean containsTheSameElements(int [] array1,int [] array2) { 
-            if (countUniqe(array1)!= countUniqe(array2)) {
-                return false;
+
+    public static boolean containsTheSameElements(int[] array1, int[] array2) {
+        if (countUniqe(array1)!= countUniqe(array2)) {
+            return false;
             }
             if ((intersection(array1, array2)).length == countUniqe(array2)) {
                 return true;
             }
             else {return false;}
             }
+    
+    
+    // public static boolean containsTheSameElements(int [] array1,int [] array2) { 
+    //         if (countUniqe(array1)!= countUniqe(array2)) {
+    //             return false;
+    //         }
+    //         if ((intersection(array1, array2)).length == countUniqe(array2)) {
+    //         return true;
+    //        }
+    //         else {return false;}
+    //         }
     
     public static int [] intersection(int [] set1, int[] set2) {
         // a function that returns the intersection of two sets
@@ -110,30 +132,31 @@ public class ArrayOps {
         return finalArray;
 
     }
+}
 
     
 
-    public static boolean isSorted(int [] array) {
-        // for increasing order
-        boolean isIncreasing = true;
-        for (int i = 0; i < array.length - 1; i++) {
-            if (array[i] > array[i + 1]) {
-                isIncreasing = false;
-                    break;
-                }
-            }
-        if (isIncreasing) {
-            return true;
-            }
-        // for decreasing order
-        for (int j = 0; j < array.length - 1; j++) {
-            if (array[j] < array[j + 1]) {
-                return false;
-                }
-            }
-        return true;
-        }
+    // public static boolean isSorted(int [] array) {
+    //     // for increasing order
+    //     boolean isIncreasing = true;
+    //     for (int i = 0; i < array.length - 1; i++) {
+    //         if (array[i] > array[i + 1]) {
+    //             isIncreasing = false;
+    //                 break;
+    //             }
+    //         }
+    //     if (isIncreasing) {
+    //         return true;
+    //         }
+    //     // for decreasing order
+    //     for (int j = 0; j < array.length - 1; j++) {
+    //         if (array[j] < array[j + 1]) {
+    //             return false;
+    //             }
+    //         }
+    //     return true;
+    //     }
         
-    }
+    // }
 
 
