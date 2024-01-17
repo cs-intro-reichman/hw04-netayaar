@@ -1,8 +1,8 @@
 public class ArrayOps {
     public static void main(String[] args) {
         int [] myArray = {1,2,3,3,3,4};
-        int [] anotherArray = {0,2,3,1};
-        System.out.println(isSorted(myArray));
+        int [] anotherArray = {2,8,3,7,8};
+        System.out.println(containsTheSameElements(anotherArray, myArray));
 
         
     }
@@ -26,7 +26,7 @@ public class ArrayOps {
     public static int secondMaxValue(int [] array) {
         int i = 0;
         int [] newArray =  new int [array.length-countMaxChar(array)];
-        for(int j = 0; j < newArray.length; j++) {
+        for(int j = 0; j < array.length; j++) {
             if (array[j] != findMax(array)) {
                 newArray[i++] = array [j];   
             }
@@ -82,16 +82,15 @@ public class ArrayOps {
     }
     
     
-    public static boolean containsTheSameElements(int [] array1,int [] array2) {
-        if (countUniqe(array1)!= countUniqe(array2)) {
-            return false;
-        }
-        if ((intersection(array1, array2)).length == countUniqe(array2)) {
-            return true;
-        }
-        else {return false;}
-        }
-
+    public static boolean containsTheSameElements(int [] array1,int [] array2) { 
+            if (countUniqe(array1)!= countUniqe(array2)) {
+                return false;
+            }
+            if ((intersection(array1, array2)).length == countUniqe(array2)) {
+                return true;
+            }
+            else {return false;}
+            }
     
     public static int [] intersection(int [] set1, int[] set2) {
         // a function that returns the intersection of two sets
