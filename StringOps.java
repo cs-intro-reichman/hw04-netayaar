@@ -22,21 +22,113 @@ public class StringOps {
     //////                                               ///////
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) {
+        String myStr = "Neta yaar is amazing";
+        char n = 'a';
+        System.out.println(allIndexOf(myStr, n));
         
     }
 
     public static String capVowelsLowRest (String string) {
-        // Write your code here:
-        return "";
+        String newString = "";
+        char character ; 
+        for (int i = 0; i < string.length(); i++) {
+            character = string.charAt(i);
+            // convert vowel to uppercase
+            if (isVowel(character)) {
+                if (isUpperCase(character)) {   
+                }else {
+                    character = (char)(character - 'a' +'A');
+                }
+            } else if (isUpperCase(character) && !isVowel(character)) {
+                character = (char)(character + 'a' - 'A');
+            } newString += character;
+                
+            }return newString;
+                
+            }
+    public static boolean isUpperCase (char character) {
+        return 'A' <= character && character <= 'Z'; 
+
     }
 
-    public static String camelCase (String string) {
-        // Write your code here:
-        return "";
+    public static boolean isLowerCase (char character) {
+        return  'a' <= character && character <= 'z';
     }
+        
+         
+    
+    public static boolean isVowel (char character) {
+        if (character == 'a' || character == 'e' || character == 'i' || character == 'o' || character == 'u' ||
+         character == 'A' || character == 'E' || character == 'I' || character == 'O' || character == 'U') {
+            return true;
+            
+        } return false;
+    }
+    public static String camelCase(String string) {
+        String changeToLowerCase = "";
+        char character;
+    
+        // a loop that changes all of the letters to lowercase
+        for (int i = 0; i < string.length(); i++) {
+            character = string.charAt(i);
+            if (isUpperCase(character)) {
+                character = (char) (character + ('a' - 'A'));
+            }
+            changeToLowerCase += character;
+        }
+    
+        String firstLetterUpperCase = "";
+    
+        for (int i = 0; i < changeToLowerCase.length(); i++) {
+            character = changeToLowerCase.charAt(i);
+            if (i==0) {
+                firstLetterUpperCase += changeToLowerCase.charAt(i);
+                
+            }
+            else if((character == ' ' && i + 1 < string.length() && isLowerCase(string.charAt(i + 1)))) {
+                firstLetterUpperCase += (char) (changeToLowerCase.charAt(i + 1) - 32);
+                i++;
+            } else {
+                firstLetterUpperCase += character;
+            }
+        }
+    
+        String noSpace = "";
+    
+        for (int i = 0; i < firstLetterUpperCase.length(); i++) {
+            if (firstLetterUpperCase.charAt(i) != ' ') {
+                noSpace += firstLetterUpperCase.charAt(i);
+            }
+        }
+    
+        // a loop that deletes the spaces
+        String resultString = "";
+        for (int i = 0; i < noSpace.length(); i++) {
+            character = noSpace.charAt(i);
+            if (character != ' ') {
+                resultString += character;
+            }
+        }
+    
+        return resultString;
+    }
+     
 
     public static int[] allIndexOf (String string, char chr) {
-        // Write your code here:
-        return new int[1];
+        int count = 0;
+        for (int i = 0; i < string.length(); i++) {
+        if (string.charAt(i) == chr) {
+            count += 1;          
+        }
+       }
+       int index = 0;
+       int[] arrayOfIndex = new int [count];
+       for (int i = 0; i < string.length(); i++) {
+        if (string.charAt(i)== chr) {
+            arrayOfIndex[index] = i;  
+            index ++;
+        }
+       }
+        return arrayOfIndex;
     }
 }
