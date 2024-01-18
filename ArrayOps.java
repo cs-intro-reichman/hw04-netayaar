@@ -29,6 +29,8 @@ public class ArrayOps {
     public static int secondMaxValue(int [] array) {
         int i = 0;
         int [] newArray =  new int [array.length-countMaxChar(array)];
+            
+        
         if (countMaxChar(array) >= 2) { return findMax(newArray);
             
         }
