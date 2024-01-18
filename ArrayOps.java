@@ -1,11 +1,10 @@
 public class ArrayOps {
     public static void main(String[] args) {
         int [] myArray = {2,2,3,7,8,3,2};
-        int [] anotherArray = {8,2,7,7,3};
-        System.out.println(countUniqe(anotherArray));
-        System.out.println(intersection(myArray, anotherArray));
+        int [] anotherArray = {2,8,3,7,8};
+        System.out.println(findMax(anotherArray));
         boolean flag = true;
-        System.out.println(flag);
+        
 
         
     }
@@ -34,13 +33,13 @@ public class ArrayOps {
         if (countMaxChar(array) >= 2) { return findMax(newArray);
             
         }
-        for(int j = 0; j < array.length; j++) {
+        else { for(int j = 0; j < array.length; j++) {
             if (array[j] != findMax(array)) {
                 newArray[i++] = array [j];   
             }
         }
         return findMax(newArray);
-    }
+    }}
     public static int countMaxChar(int [] array) {
         // a function that finds the max number of the array and counts how many times it apears
         int max = array[0];
