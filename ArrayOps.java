@@ -10,6 +10,7 @@ public class ArrayOps {
     }
     
     public static int findMissingInt (int [] array) {
+        // #feedback - "casting" from array to string is usually not needed. You can iterate on the array and on the numbers to find the missing one.
         String arrayToString = "";
         int missingInteger = 0;
         for ( int i = 0; i < array.length; i++) {
@@ -30,16 +31,21 @@ public class ArrayOps {
         int [] newArray =  new int [array.length-countMaxChar(array)];
             
         
-        if (countMaxChar(array) >= 2) { return findMax(newArray);
+        if (countMaxChar(array) >= 2) { 
+            return findMax(newArray); // #feedback - should start in a new line.
             
         }
-        else { for(int j = 0; j < array.length; j++) {
-            if (array[j] != findMax(array)) {
-                newArray[i++] = array [j];   
+        else { 
+            // #feedback - instead of searching for the max value everytime, you can do it once and store it in a variable.
+            // You also don't need additional array since you loop once on the array and find the second max value (that is not equal to the max)
+            for(int j = 0; j < array.length; j++) {
+                if (array[j] != findMax(array)) {
+                    newArray[i++] = array [j];   
+                }
             }
+            return findMax(newArray);
         }
-        return findMax(newArray);
-    }}
+    }
     public static int countMaxChar(int [] array) {
         // a function that finds the max number of the array and counts how many times it apears
         int max = array[0];
@@ -95,6 +101,7 @@ public class ArrayOps {
 
     
     public static boolean containsTheSameElements(int [] array1,int [] array2) { 
+        // #feedback - the number of elements doesn't need to be the same. Only that the two arrays contain the same numbers.
             if (countUniqe(array1)!= countUniqe(array2)) {
                 return false;
             }
