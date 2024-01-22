@@ -35,11 +35,12 @@ public class StringOps {
             character = string.charAt(i);
             // convert vowel to uppercase
             if (isVowel(character)) {
+                // #feedback - if with nothing in it is not needed, you can just have "if(!isUpperCase...".
                 if (isUpperCase(character)) {   
                 }else {
                     character = (char)(character - 'a' +'A');
                 }
-            } else if (isUpperCase(character) && !isVowel(character)) {
+            } else if (isUpperCase(character) && !isVowel(character)) { // #feedback - no need to check isVowel, we know that this char is not vowel because we are in the "else".
                 character = (char)(character + 'a' - 'A');
             } newString += character;
                 
@@ -62,7 +63,8 @@ public class StringOps {
          character == 'A' || character == 'E' || character == 'I' || character == 'O' || character == 'U') {
             return true;
             
-        } return false;
+        } 
+        return false;
     }
     public static String camelCase(String string) {
         String changeToLowerCase = "";
